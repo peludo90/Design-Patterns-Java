@@ -21,7 +21,7 @@ public abstract class Shape implements Cloneable {
 		this.type = type;
 	}
 
-	public Shape clone() {
+	public Object copy() {
 		Shape clone = null;
 
 		try {

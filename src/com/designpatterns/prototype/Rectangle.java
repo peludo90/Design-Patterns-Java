@@ -1,5 +1,11 @@
 package com.designpatterns.prototype;
 
-public class Rectangle {
+public class Rectangle extends Shape {
+
+	public Rectangle() {
+		setId(333);
+		setType("Rectangle");
+	}
+
 
 }
