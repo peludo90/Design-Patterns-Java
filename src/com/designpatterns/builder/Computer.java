@@ -1,19 +1,20 @@
 package com.designpatterns.builder;
 
 import java.security.InvalidAlgorithmParameterException;
+import java.util.MissingFormatArgumentException;
 
 public class Computer {
 
 	private String processorName;
-	private int processorCapacity;
+	private double processorCapacity;
 	private String hddName;
-	private int hddCapacity;
+	private double hddCapacity;
 	private String ramName;
-	private int ramCapacity;
+	private double ramCapacity;
 	private String boarName;
-	private int boardCapacity;
+	private double boardCapacity;
 	private String screenName;
-	private int screenSize;
+	private double screenSize;
 	private String mouseName;
 	private String keyboarName;
 
@@ -36,7 +37,7 @@ public class Computer {
 		return processorName;
 	}
 
-	public int getProcessorCapacity() {
+	public double getProcessorCapacity() {
 		return processorCapacity;
 	}
 
@@ -44,7 +45,7 @@ public class Computer {
 		return hddName;
 	}
 
-	public int getHddCapacity() {
+	public double getHddCapacity() {
 		return hddCapacity;
 	}
 
@@ -52,7 +53,7 @@ public class Computer {
 		return ramName;
 	}
 
-	public int getRamCapacity() {
+	public double getRamCapacity() {
 		return ramCapacity;
 	}
 
@@ -60,7 +61,7 @@ public class Computer {
 		return boarName;
 	}
 
-	public int getBoardCapacity() {
+	public double getBoardCapacity() {
 		return boardCapacity;
 	}
 
@@ -68,7 +69,7 @@ public class Computer {
 		return screenName;
 	}
 
-	public int getScreenSize() {
+	public double getScreenSize() {
 		return screenSize;
 	}
 
@@ -83,15 +84,15 @@ public class Computer {
 	public static class Builder {
 
 		private String processorName;
-		private int processorCapacity;
+		private double processorCapacity;
 		private String hddName;
-		private int hddCapacity;
+		private double hddCapacity;
 		private String ramName;
-		private int ramCapacity;
+		private double ramCapacity;
 		private String boarName;
-		private int boardCapacity;
+		private double boardCapacity;
 		private String screenName;
-		private int screenSize;
+		private double screenSize;
 		private String mouseName;
 		private String keyboarName;
 
@@ -100,7 +101,7 @@ public class Computer {
 			return this;
 		}
 
-		public Builder setProcessorCapacity(int processorCapacity) {
+		public Builder setProcessorCapacity(double processorCapacity) {
 			this.processorCapacity = processorCapacity;
 			return this;
 		}
@@ -110,7 +111,7 @@ public class Computer {
 			return this;
 		}
 
-		public Builder setHddCapacity(int hddCapacity) {
+		public Builder setHddCapacity(double hddCapacity) {
 			this.hddCapacity = hddCapacity;
 			return this;
 		}
@@ -120,7 +121,7 @@ public class Computer {
 			return this;
 		}
 
-		public Builder setRamCapacity(int ramCapacity) {
+		public Builder setRamCapacity(double ramCapacity) {
 			this.ramCapacity = ramCapacity;
 			return this;
 		}
@@ -130,7 +131,7 @@ public class Computer {
 			return this;
 		}
 
-		public Builder setBoardCapacity(int boardCapacity) {
+		public Builder setBoardCapacity(double boardCapacity) {
 			this.boardCapacity = boardCapacity;
 			return this;
 		}
@@ -140,7 +141,7 @@ public class Computer {
 			return this;
 		}
 
-		public Builder setScreenSize(int screenSize) {
+		public Builder setScreenSize(double screenSize) {
 			this.screenSize = screenSize;
 			return this;
 		}
@@ -155,13 +156,35 @@ public class Computer {
 			return this;
 		}
 
-		public Computer build() throws InvalidAlgorithmParameterException {
-			if (processorName != null && processorCapacity != 0 && hddName != null && hddCapacity != 0
-					&& ramName != null && ramCapacity != 0 && boarName != null && boardCapacity != 0
-					&& screenName != null && screenSize != 0 && mouseName != null && keyboarName != null)
+		public Computer build() {
+			if (processorName == null) {
+				throw new IllegalStateException("Falta el parámetro: processorName");
+			} else if (processorCapacity == 0) {
+				throw new IllegalStateException("Falta el parámetro: processorCapacity");
+			} else if (hddName == null) {
+				throw new IllegalStateException("Falta el parámetro: hddName");
+			} else if (hddCapacity == 0) {
+				throw new IllegalStateException("Falta el parámetro: hddCapacity");
+			} else if (ramName == null) {
+				throw new IllegalStateException("Falta el parámetro: ramName");
+			} else if (ramCapacity == 0) {
+				throw new IllegalStateException("Falta el parámetro: ramCapacity");
+			} else if (boarName == null) {
+				throw new IllegalStateException("Falta el parámetro: boarName");
+			} else if (boardCapacity == 0) {
+				throw new IllegalStateException("Falta el parámetro: boardCapacity");
+			} else if (screenName == null) {
+				throw new IllegalStateException("Falta el parámetro: screenName");
+			} else if (screenSize == 0) {
+				throw new IllegalStateException("Falta el parámetro: screenSize");
+			} else if (mouseName == null) {
+				throw new IllegalStateException("Falta el parámetro: mouseName");
+			} else if (keyboarName == null) {
+				throw new IllegalStateException("Falta el parámetro: keyboarName");
+			} else {
 				return new Computer(this);
-			else
-				throw new InvalidAlgorithmParameterException("Falta tal parametro");
+			}
+
 		}
 
 	}
