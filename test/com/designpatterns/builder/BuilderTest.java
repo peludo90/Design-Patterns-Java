@@ -1,7 +1,6 @@
 package com.designpatterns.builder;
 
 import static org.junit.Assert.*;
-import java.util.MissingResourceException;
 
 import org.junit.Test;
 
